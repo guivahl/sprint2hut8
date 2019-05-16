@@ -43,3 +43,7 @@ Delete one:
 	Usar a opção DELETE do Postman
 	http://localhost:3000/posts/<id do post>
 	SEND!		
+
+
+Heroku:
+	https://salty-springs-32161.herokuapp.com/
