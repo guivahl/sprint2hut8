@@ -6,9 +6,12 @@ const expressLayouts = require('express-ejs-layouts');
 require('dotenv/config');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
+
 
 const app = express();
-
+//passaport config
+require('./config/passport')(passport);
 //body parser
 app.use(bodyParser.json());
 app.use(express.urlencoded({
@@ -27,6 +30,9 @@ app.use(session({
 	saveUninitialized: true
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
+
 //connect flash
 app.use(flash());
 
@@ -34,22 +40,23 @@ app.use(flash());
 app.use(function(req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
   next();
 });
 
 
 //import routes
-const postsRoute = require ('./routes/posts');
-const indexRoute = require ('./routes/index');
-const usersRoute = require ('./routes/users');
+const postsRoute = require ('./routes/posts.js');
+const indexRoute = require ('./routes/index.js');
+const usersRoute = require ('./routes/users.js');
 
 //middlewares
 app.use('/posts', postsRoute);
 app.use('/users', usersRoute);
-app.get('/', indexRoute);
+app.use('/', indexRoute);
 
 mongoose.connect(process.env.DB_CONNECTION,
 	{ useNewUrlParser: true},
-	()=> console.log('connected'));
+	()=> console.log('connected to db'));
 
 app.listen(PORT);
