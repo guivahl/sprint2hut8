@@ -2,7 +2,7 @@
   "name": "sprint2hut8",
   "version": "1.0.0",
   "description": "Sprint 2 Hut8",
-  "main": "noticias.js",
+  "main": "app.js",
   "scripts": {
     "start": "nodemon app.js"
   },
