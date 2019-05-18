@@ -10,7 +10,7 @@ router.get('/', forwardAuthenticated, async (req,res)=>res.render('welcome'));
 // Dashboard  
 router.get('/dashboard',ensureAuthenticated, async (req,res)=>{
 	try{
-		const posts = await Post.find().limit(4).sort({date:-1});
+		const posts = await Post.find();
 		res.render('dashboard', {	
    	   		 name: req.user.name,
    	   		 posts: posts
@@ -21,7 +21,6 @@ router.get('/dashboard',ensureAuthenticated, async (req,res)=>{
 });
 // post dashboard
 router.post('/dashboard', async (req,res) =>{
-	console.log(req.body.description);
 	const post = new Post({
 		name: req.body.titulo,
 		description: req.body.description
