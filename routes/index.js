@@ -56,7 +56,6 @@ router.get('/dashboard/patch/:postId', async (req,res)=>{
 });
 //post patch page
 router.post('/dashboard/patch/:postId', async (req,res)=>{
-			console.log('patchinggg');
 			try{
 				const updatedPost = await Post.updateOne(
 					{ _id: req.params.postId },
@@ -64,10 +63,8 @@ router.post('/dashboard/patch/:postId', async (req,res)=>{
 							name: req.body.patchtitulo,
 							description: req.body.patchdesc}}
 			);
-				console.log(req.body.patchtitulo);
-				console.log(req.body.patchdesc);
 			} catch(err){
-				console.log({ message: err});
+				res.json({ message: err});
 			}
 			res.redirect('/dashboard');
 });
