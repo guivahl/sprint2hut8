@@ -1,0 +1,23 @@
+<p class="lead mb-3" style="margin-top:10px;margin-left: 400px;">Editando o post <%= %></p>
+
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Titulo post</span>
+  </div>
+ <textarea class="form-control" name="titulo" aria-label="With textarea"></textarea>
+
+<div class="input-group" action="/dashboard">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Descrição</span>
+  </div>
+  <textarea class="form-control" name="description" aria-label="With textarea"></textarea>
+ 
+</div>
+	<form action="" method="POST">
+		<button href="" type="submit" class="btn btn-light">Patch</button>
+	</form>
+
+
+	<a href="/users/logout" style="margin-left:960px;" class="btn btn-secondary" >Logout</a>
+	<a href="/dashboard" style="margin-left:940px;margin-top: -37px;" class="btn btn-secondary" >Voltar</a>
+</form>

@@ -6,7 +6,8 @@ const Post = require('../models/Post')
 router.get('/', async (req,res)=>{
 	try{
 		// res.send('You are on posts!');
-		const posts = await Post.find();
+	//	let posts = [];
+		const posts = await Post.find().limit(3).sort({date:-1});
 		res.json(posts);
 	} catch(err){
 		res.json({message:err});
@@ -56,7 +57,8 @@ router.patch('/:postId', async (req,res)=>{
 		const updatedPost = await Post.updateOne(
 			{ _id: req.params.postId },
 			{ $set: {name: req.body.name,
-					description: req.body.description}}
+					description: req.body.description,
+					date: req.body.date}}
 			);
 		res.json(updatedPost);
 	} catch(err){

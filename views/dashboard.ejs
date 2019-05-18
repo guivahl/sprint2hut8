@@ -1,3 +1,49 @@
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Bem vindo <%= user.name %></p>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
+<p class="lead mb-3" style="margin-top:10px;margin-left: 400px;">Welcome <%= name %>!</p>
+
+<form action="" method="POST">
+<div class="input-group input-group-sm mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-sm">Titulo post</span>
+  </div>
+ <textarea class="form-control" name="titulo" aria-label="With textarea"></textarea>
+</div>
+
+
+
+<div class="input-group" action="/dashboard">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Descrição</span>
+  </div>
+  <textarea class="form-control" name="description" aria-label="With textarea"></textarea>
+ 
+</div>
+	<button href="/dashboard" type="submit" class="btn btn-light">Submit</button>
+	<a href="/users/logout" style="margin-left:960px;" class="btn btn-secondary" >Logout</a>
+</form>
+
+
+<table>
+<% for(var i=0; i < posts.length; i++) { %>
+   <tr>
+ <div class="col-sm-6" style="padding-bottom: 10px;padding-top: 10px;">
+    <div class="card" style="height: 150px; width:1100px">
+      <div class="card-body">
+        <h5 class="card-title" name="namepost"><%= posts[i].name %></h5>
+        <p class="card-text" description="descpost"><%= posts[i].description%> </p>
+       
+        <form action="" method="PATCH">
+        <a href="/dashboard/patch/<%=posts[i].id%>" style="margin-top:20px;margin-left:0px;width:80px;height:30px;" type="submit" class="btn btn-light">Update</a>
+        </form>
+
+        <form action="" method="DELETE">
+        <a href="/dashboard/delete/<%=posts[i].id%>" style="margin-left:90px;margin-top:-57px;width:80px;height:30px;"type="submit" class="btn btn-light">Delete</a>
+        </form>
+
+        
+
+      </div>
+    </div>
+  </div>
+   </tr>
+<% } %>
+</table>
