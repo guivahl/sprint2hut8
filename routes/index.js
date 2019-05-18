@@ -35,7 +35,7 @@ router.post('/dashboard', async (req,res) =>{
 	res.redirect('/dashboard');
 });
 
-// Delete one post
+// Delete one posthttps://github.com/guivahl/sprint2hut8
 router.get('/dashboard/delete/:postId', async (req,res)=>{
 			try{
 				const removedPost = await Post.deleteOne(
@@ -48,7 +48,8 @@ router.get('/dashboard/delete/:postId', async (req,res)=>{
 router.get('/dashboard/patch/:postId', async (req,res)=>{
 			try{
 				const p = await Post.findById(req.params.postId);
-				res.render('patch',{titulo: p.name});
+				res.render('patch',{titulo: p.name,
+					p: p});
 			} catch(err){
 				console.log(err);
 			}
