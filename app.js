@@ -25,15 +25,11 @@ app.set('view engine', 'ejs');
 // express session
 
 app.use(session({
-	cookie:{
-    secure: true,
-    maxAge:60000
-       },
-	store: new RedisStore(),
 	secret: 'secret',
-	saveUninitialized: true,
-	resave: false
+	resave: true,
+	saveUninitialized: true
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
