@@ -52,7 +52,6 @@ const usersRoute = require ('./routes/users.js');
 
 //middlewares
 app.use('/posts', postsRoute);
-app.use('/aaa', postsRoute);
 app.use('/users', usersRoute);
 app.use('/', indexRoute);
 
